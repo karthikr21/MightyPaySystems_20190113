@@ -1,14 +1,16 @@
 package com.qa.pojo.res.excel;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "responseCode", "message", "rrn", "authidresp", "txnUid", "fromUserEntityId", "fromWalletId", "digitalAssetTypeCode", "quantity",
-  "availableQuantity","platformRef", "trxnTime", "trxnTimeZone" })
+@JsonPropertyOrder({ "responseCode", "message", "rrn", "authidresp", "txnUid", "userEntityId", "walletId",
+		"digitalAssetList", "platformRef", "trxnTime", "trxnTimeZone" })
 
-public class P2PTransfer_Res {
+public class QueryWalletBalance_Res {
 
 	@JsonProperty("responseCode")
 	public String responseCode;
@@ -20,25 +22,17 @@ public class P2PTransfer_Res {
 	public String authidresp;
 	@JsonProperty("txnUid")
 	public String txnUid;
-	@JsonProperty("fromUserEntityId")
-	public String fromUserEntityId;
-	@JsonProperty("fromWalletId")
-	public String fromWalletId;
-	@JsonProperty("digitalAssetTypeCode")
-	public String digitalAssetTypeCode;
-	@JsonProperty("quantity")
-	public String quantity;
-	@JsonProperty("availableQuantity")
-	public String availableQuantity;
+	@JsonProperty("userEntityId")
+	public String userEntityId;
+	@JsonProperty("walletId")
+	public String walletId;
+	@JsonProperty("digitalAssetList")
+	public List<DigitalAssetList_Res> digitalAssetList;
 	@JsonProperty("platformRef")
 	public String platformRef;
 	@JsonProperty("trxnTime")
 	public String trxnTime;
 	@JsonProperty("trxnTimeZone")
 	public String trxnTimeZone;
-
-	public P2PTransfer_Res() {
-
-	}
 
 }

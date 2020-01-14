@@ -6,7 +6,8 @@ public enum APIResources {
 
 	OnBoard("/onboard"), 
 	Topup("/topup"),
-	p2ppayment("/p2p-payment");
+	p2ppayment("/p2p-payment"),
+	queryWalletBalance("/query-wallet-balance");
 	
 
 	private String resource;

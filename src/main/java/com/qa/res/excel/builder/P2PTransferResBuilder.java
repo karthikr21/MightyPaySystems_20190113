@@ -47,6 +47,7 @@ public class P2PTransferResBuilder {
 			xlsReader.addColumn(shtName, "Transaction Time Zone");
 			xlsReader.addColumn(shtName, "Transaction UID");
 			xlsReader.addColumn(shtName, "From User EntityId");
+			xlsReader.addColumn(shtName, "availableQuantity");
 			xlsReader.addColumn(shtName, "quantity");
 			xlsReader.addColumn(shtName, "platformRef");
 			
@@ -63,7 +64,7 @@ public class P2PTransferResBuilder {
 		xlsReader.setCellData(sheetName + "_Res", "Wallet ID", rowNum, P2pTransfer.fromWalletId);
 		xlsReader.setCellData(sheetName + "_Res", "User Entity ID", rowNum, P2pTransfer.digitalAssetTypeCode);
 		xlsReader.setCellData(sheetName + "_Res", "Wallet ID", rowNum, P2pTransfer.quantity);
-		
+		xlsReader.setCellData(sheetName + "_Res", "Wallet ID", rowNum, P2pTransfer.availableQuantity);
 
 		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
 	}
