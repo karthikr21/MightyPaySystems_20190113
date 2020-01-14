@@ -80,5 +80,6 @@ public class RestAssuredBase extends PreAndTest {
 			System.exit(-1);
 		}
 	}
-	
+
+
 }

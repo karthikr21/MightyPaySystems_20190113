@@ -60,12 +60,13 @@ public class P2PTransferResBuilder {
 		xlsReader.setCellData(sheetName + "_Res", "Transaction Time", rowNum, P2pTransfer.trxnTime);
 		xlsReader.setCellData(sheetName + "_Res", "Transaction Time Zone", rowNum, P2pTransfer.trxnTimeZone);
 		xlsReader.setCellData(sheetName + "_Res", "Transaction UID", rowNum, P2pTransfer.txnUid);
-		xlsReader.setCellData(sheetName + "_Res", "User Entity ID", rowNum, P2pTransfer.fromUserEntityId);
-		xlsReader.setCellData(sheetName + "_Res", "Wallet ID", rowNum, P2pTransfer.fromWalletId);
-		xlsReader.setCellData(sheetName + "_Res", "User Entity ID", rowNum, P2pTransfer.digitalAssetTypeCode);
-		xlsReader.setCellData(sheetName + "_Res", "Wallet ID", rowNum, P2pTransfer.quantity);
-		xlsReader.setCellData(sheetName + "_Res", "Wallet ID", rowNum, P2pTransfer.availableQuantity);
-
+		xlsReader.setCellData(sheetName + "_Res", "From User EntityId", rowNum, P2pTransfer.fromUserEntityId);
+		xlsReader.setCellData(sheetName + "_Res", "From Wallet Id", rowNum, P2pTransfer.fromWalletId);
+		xlsReader.setCellData(sheetName + "_Res", "Digital Asset TypeCode", rowNum, P2pTransfer.digitalAssetTypeCode);
+		xlsReader.setCellData(sheetName + "_Res", "quantity", rowNum, P2pTransfer.quantity);
+		xlsReader.setCellData(sheetName + "_Res", "availableQuantity", rowNum, P2pTransfer.availableQuantity);
+		xlsReader.setCellData(sheetName + "_Res", "platformRef", rowNum, P2pTransfer.platformRef);
+		
 		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
 	}
 

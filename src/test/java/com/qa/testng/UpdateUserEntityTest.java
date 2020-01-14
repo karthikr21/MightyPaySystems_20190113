@@ -11,8 +11,8 @@ import org.testng.annotations.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.base.APIResources;
 import com.qa.base.RestAssuredBase;
-import com.qa.res.excel.builder.OnBoardUserEntityResBuilder;
-import com.qa.testdata.excel.builder.OnBoardUserEntity;
+import com.qa.res.excel.builder.UpdateUserEntityResBuilder;
+import com.qa.testdata.excel.builder.UpdateUserEntity;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
@@ -24,28 +24,30 @@ public class UpdateUserEntityTest extends RestAssuredBase {
 	ResponseSpecification resspec;
 	Response response;
 	RequestSpecification res;
-	OnBoardUserEntity data = new OnBoardUserEntity();
-	OnBoardUserEntityResBuilder responseBuilder = new OnBoardUserEntityResBuilder();
+	UpdateUserEntity data = new UpdateUserEntity();
+	UpdateUserEntityResBuilder responseBuilder = new UpdateUserEntityResBuilder();
 
 	@BeforeTest
 	public void setValues() {
-		dataWorkBookName = "OnboardUserEntity.xlsx";
-		dataSheetName = "Onboard User Entity";
+		dataWorkBookName = "UpdateUserEntity.xlsx";
+		dataSheetName = "UpdateUserEntity";
 	}
 
 	@Test(dataProvider = "fetchData")
-	public void verifyOnBoardUserEntity(Map<String, String> map) throws IOException {
+	public void verifyUpdateUserEntity(Map<String, String> map) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		String reqData = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(data.addOnBoardUserData(map));
-		APIResources resourceAPI = APIResources.valueOf("OnBoard");
+		String reqData = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(data.addUpdateUserEntityData(map));
+		APIResources resourceAPI = APIResources.valueOf("updateUserEntity");
 		res = given().spec(requestSpecification()).body(reqData);
 		resspec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 		response = res.when().post(resourceAPI.getResource());
 		System.out.println( map.get("TestCaseID")   +"is in Progress");
+		
+		
 		if (response != null) {
 			response.prettyPrint();
 			writeFile(resourceAPI.toString(), reqData, response, map.get("TestCaseID"));
-			responseBuilder.OnBoardResponse(mapper, response, dataWorkBookName, dataSheetName, map);
+			responseBuilder.UpdateUserEntityResponse(mapper, response, dataWorkBookName, dataSheetName, map);
 		} else {
 		}
 	}
