@@ -42,8 +42,6 @@ public class UpdateUserEntityTest extends RestAssuredBase {
 		resspec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
 		response = res.when().post(resourceAPI.getResource());
 		System.out.println( map.get("TestCaseID")   +"is in Progress");
-		
-		
 		if (response != null) {
 			response.prettyPrint();
 			writeFile(resourceAPI.toString(), reqData, response, map.get("TestCaseID"));
