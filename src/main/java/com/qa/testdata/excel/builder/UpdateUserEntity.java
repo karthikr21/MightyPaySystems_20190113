@@ -7,10 +7,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.qa.pojo.req.excel.UpdateUserEntity_Req;
 import com.qa.pojo.req.excel.UserEntityDetails_Req;
 
-
 public class UpdateUserEntity {
 
 	public UpdateUserEntity_Req addUpdateUserEntityData(Map<String, String> map) throws JsonProcessingException {
+
+		UserEntityDetails_Req UserEntityDetails = new UserEntityDetails_Req();
 
 		UpdateUserEntity_Req UpdateUserEntity = new UpdateUserEntity_Req();
 		UpdateUserEntity.platformCode = map.get("platformCode");
@@ -18,11 +19,10 @@ public class UpdateUserEntity {
 		UpdateUserEntity.userEntityId = map.get("userEntityId");
 		UpdateUserEntity.timestamp = map.get("timestamp");
 		UpdateUserEntity.timeZone = map.get("timeZone");
-		
-		//UserEntityDetails
-		UserEntityDetails_Req UserEntityDetails = new UserEntityDetails_Req();
-		
-		
+		UpdateUserEntity.userEntityDetails = UserEntityDetails;
+
+		// UserEntityDetails
+
 		UserEntityDetails.mobileNo = map.get("mobileNo");
 		UserEntityDetails.name = map.get("name");
 		UserEntityDetails.status = map.get("status");
@@ -37,7 +37,7 @@ public class UpdateUserEntity {
 		UserEntityDetails.state = map.get("state");
 		UserEntityDetails.emailId = map.get("emailId");
 		UserEntityDetails.kycFlag = map.get("kycFlag");
-		
+
 		return UpdateUserEntity;
 	}
 

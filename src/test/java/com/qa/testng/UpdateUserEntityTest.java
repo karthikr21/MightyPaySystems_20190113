@@ -37,6 +37,7 @@ public class UpdateUserEntityTest extends RestAssuredBase {
 	public void verifyUpdateUserEntity(Map<String, String> map) throws IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		String reqData = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(data.addUpdateUserEntityData(map));
+		//System.out.println(reqData);
 		APIResources resourceAPI = APIResources.valueOf("updateUserEntity");
 		res = given().spec(requestSpecification()).body(reqData);
 		resspec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();

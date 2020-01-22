@@ -45,6 +45,7 @@ public class UpdateUserEntityResBuilder {
 			xlsReader.addColumn(shtName, "Transaction Time Zone");
 			xlsReader.addColumn(shtName, "Transaction UID");
 			xlsReader.addColumn(shtName, "User Entity ID");
+			xlsReader.addColumn(shtName, "user Entity Type");
 		}
 		xlsReader.setCellData(sheetName + "_Res", "Test Case ID", rowNum, map.get("TestCaseID"));
 		xlsReader.setCellData(sheetName + "_Res", "Response Code", rowNum, UpdateRes.responseCode);
@@ -55,7 +56,7 @@ public class UpdateUserEntityResBuilder {
 		xlsReader.setCellData(sheetName + "_Res", "User Entity ID", rowNum, UpdateRes.userEntityId);
 		xlsReader.setCellData(sheetName + "_Res", "Transaction Time", rowNum, UpdateRes.trxnTime);
 		xlsReader.setCellData(sheetName + "_Res", "Transaction Time Zone", rowNum, UpdateRes.trxnTimeZone);
-		
+		xlsReader.setCellData(sheetName + "_Res", "user Entity Type", rowNum, UpdateRes.userEntityType);
 		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
 	}
 

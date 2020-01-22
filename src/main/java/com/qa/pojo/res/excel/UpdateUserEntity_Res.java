@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "responseCode", "message", "rrn", "authidresp", "txnUid", "userEntityId", "walletId", "trxnTime",
-		"trxnTimeZone" })
+		"trxnTimeZone","userEntityType" })
 
 public class UpdateUserEntity_Res {
 
@@ -28,6 +28,8 @@ public class UpdateUserEntity_Res {
 	public String trxnTime;
 	@JsonProperty("trxnTimeZone")
 	public String trxnTimeZone;
+	@JsonProperty("userEntityType")
+	public String userEntityType;
 
 	public UpdateUserEntity_Res() {
 
