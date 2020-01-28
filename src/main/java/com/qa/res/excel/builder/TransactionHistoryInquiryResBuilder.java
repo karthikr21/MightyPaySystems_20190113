@@ -45,7 +45,8 @@ public class TransactionHistoryInquiryResBuilder {
 			xlsReader.addColumn(shtName, "Transaction UID");
 			xlsReader.addColumn(shtName, "Wallet ID");
 			xlsReader.addColumn(shtName, "User Entity ID");	
-			xlsReader.addColumn(shtName, "Transaction Date");	
+			xlsReader.addColumn(shtName, "Transaction Date");
+			xlsReader.addColumn(shtName, "Transaction UID");
 			xlsReader.addColumn(shtName, "Statement Description");	
 			xlsReader.addColumn(shtName, "print Code");	
 			xlsReader.addColumn(shtName, "Status");	
@@ -76,6 +77,7 @@ public class TransactionHistoryInquiryResBuilder {
 		} else {
 			for (StatementList_Res statement : TransactionHistoryInquiryRes.statementList) {
 				xlsReader.setCellData(sheetName + "_Res", "Transaction Date", rowNum, statement.trxnDate);
+				xlsReader.setCellData(sheetName + "_Res", "Transaction UID", rowNum, statement.txnUid);
 				xlsReader.setCellData(sheetName + "_Res", "Statement Description", rowNum, statement.stmtDesc);
 				xlsReader.setCellData(sheetName + "_Res", "print Code", rowNum, statement.printCode);
 				xlsReader.setCellData(sheetName + "_Res", "Status", rowNum, statement.status);
@@ -90,11 +92,11 @@ public class TransactionHistoryInquiryResBuilder {
 			
 		}
 
-		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
+		verifyRespCode(sheetName, map.get("Response Code"), map.get("Message"), rowNum, "Result");
 	}
 
-	private void verifyRespCode(String sheetName, String respCode, int rowNum, String colName) {
-		if (TransactionHistoryInquiryRes.responseCode.equals(respCode)) {
+	private void verifyRespCode(String sheetName, String respCode, String message, int rowNum, String colName) {
+		if (TransactionHistoryInquiryRes.responseCode.equals(respCode) && TransactionHistoryInquiryRes.message.equals(message)) {
 			xlsReader.setCellData(sheetName, colName, rowNum, "PASS");
 		} else {
 			xlsReader.setCellData(sheetName, colName, rowNum, "FAIL");

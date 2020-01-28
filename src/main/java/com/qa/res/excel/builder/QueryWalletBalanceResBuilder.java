@@ -81,11 +81,11 @@ public class QueryWalletBalanceResBuilder {
 
 		}
 
-		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
+		verifyRespCode(sheetName, map.get("Response Code"), map.get("Message"), rowNum, "Result");
 	}
 
-	private void verifyRespCode(String sheetName, String respCode, int rowNum, String colName) {
-		if (QueryWalletBalance.responseCode.equals(respCode)) {
+	private void verifyRespCode(String sheetName, String respCode, String message, int rowNum, String colName) {
+		if (QueryWalletBalance.responseCode.equals(respCode) && QueryWalletBalance.message.equals(message)) {
 			xlsReader.setCellData(sheetName, colName, rowNum, "PASS");
 		} else {
 			xlsReader.setCellData(sheetName, colName, rowNum, "FAIL");

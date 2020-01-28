@@ -5,13 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "trxnDate", "stmtDesc", "printCode", "status", "trxnImpact", "trxnQuantity", "digitalAssetTypeCode","availableQuantity",
+@JsonPropertyOrder({ "trxnDate", "txnUid", "stmtDesc", "printCode", "status", "trxnImpact", "trxnQuantity", "digitalAssetTypeCode","availableQuantity",
 		"trxnSource","trxnRefNum"})
 
 public class StatementList_Res {
 
 	@JsonProperty("trxnDate")
 	public String trxnDate;
+	@JsonProperty("txnUid")
+	public String txnUid;
 	@JsonProperty("stmtDesc")
 	public String stmtDesc;
 	@JsonProperty("printCode")

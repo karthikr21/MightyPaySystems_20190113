@@ -30,8 +30,8 @@ public class LoginTest extends RestAssuredBase {
 
 	@BeforeTest
 	public void setValues() {
-		dataWorkBookName = "Login_Req.xlsx";
-		dataSheetName = "Login_Req";
+		dataWorkBookName = "Login.xlsx";
+		dataSheetName = "login";
 	}
 
 	@Test(dataProvider = "fetchData")

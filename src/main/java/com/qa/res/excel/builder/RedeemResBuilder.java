@@ -45,6 +45,7 @@ public class RedeemResBuilder {
 			xlsReader.addColumn(shtName, "User Entity ID");
 			xlsReader.addColumn(shtName, "Wallet ID");
 			xlsReader.addColumn(shtName, "Digital Asset Type Code");
+			xlsReader.addColumn(shtName, "Quantity");
 			xlsReader.addColumn(shtName, "Available Quantity");
 			xlsReader.addColumn(shtName, "Merchant Id");
 			xlsReader.addColumn(shtName, "Merchant Ref");
@@ -61,6 +62,7 @@ public class RedeemResBuilder {
 		xlsReader.setCellData(sheetName + "_Res", "User Entity ID", rowNum, RedeemRes.userEntityId);
 		xlsReader.setCellData(sheetName + "_Res", "Wallet ID", rowNum, RedeemRes.walletId);
 		xlsReader.setCellData(sheetName + "_Res", "Digital Asset Type Code", rowNum, RedeemRes.digitalAssetTypeCode);
+		xlsReader.setCellData(sheetName + "_Res", "Quantity", rowNum, RedeemRes.quantity);
 		xlsReader.setCellData(sheetName + "_Res", "Available Quantity", rowNum, RedeemRes.availableQuantity);
 		xlsReader.setCellData(sheetName + "_Res", "Merchant Id", rowNum, RedeemRes.merchantId);
 		xlsReader.setCellData(sheetName + "_Res", "Platform Ref", rowNum, RedeemRes.merchantRef);
@@ -69,11 +71,11 @@ public class RedeemResBuilder {
 		xlsReader.setCellData(sheetName + "_Res", "Transaction Time Zone", rowNum, RedeemRes.trxnTimeZone);
 
 
-		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
+		verifyRespCode(sheetName, map.get("Response Code"), map.get("Message"), rowNum, "Result");
 	}
 
-	private void verifyRespCode(String sheetName, String respCode, int rowNum, String colName) {
-		if (RedeemRes.responseCode.equals(respCode)) {
+	private void verifyRespCode(String sheetName, String respCode, String message, int rowNum, String colName) {
+		if (RedeemRes.responseCode.equals(respCode) && RedeemRes.message.equals(message)) {
 			xlsReader.setCellData(sheetName, colName, rowNum, "PASS");
 		} else {
 			xlsReader.setCellData(sheetName, colName, rowNum, "FAIL");

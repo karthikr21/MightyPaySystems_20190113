@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "responseCode", "message", "rrn", "authidresp", "txnUid", "userEntityId", "walletId","digitalAssetTypeCode",
+@JsonPropertyOrder({ "responseCode", "message", "rrn", "authidresp", "txnUid", "userEntityId", "walletId","digitalAssetTypeCode","quantity",
 		"availableQuantity","merchantId","merchantRef","platformRef", "trxnTime","trxnTimeZone" })
 
 public class Redeem_Res {
@@ -27,6 +27,8 @@ public class Redeem_Res {
 	@JsonProperty("digitalAssetTypeCode")
 	public String digitalAssetTypeCode;
 	@JsonProperty("availableQuantity")
+	public String quantity;
+	@JsonProperty("quantity")
 	public String availableQuantity;
 	@JsonProperty("merchantId")
 	public String merchantId;

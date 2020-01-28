@@ -20,6 +20,8 @@ public class LoginResBuilder {
 
 	Xls_Reader xlsReader;
 
+	String shtName;
+
 	public void loginResponse(ObjectMapper mapper, Response response, String workBookName, String sheetName,
 			Map<String, String> map) throws JsonMappingException, JsonProcessingException {
 
@@ -36,7 +38,8 @@ public class LoginResBuilder {
 				xlsReader.removeSheet(sheetName + "_Res");
 			}
 
-			String shtName = xlsReader.addSheet(sheetName + "_Res");
+			shtName = xlsReader.addSheet(sheetName + "_Res");
+
 			xlsReader.addColumn(shtName, "Test Case ID");
 			xlsReader.addColumn(shtName, "Auth Secret");
 			xlsReader.addColumn(shtName, "Auth Token");
@@ -48,20 +51,22 @@ public class LoginResBuilder {
 		}
 		xlsReader.setCellData(sheetName + "_Res", "Test Case ID", rowNum, map.get("TestCaseID"));
 		xlsReader.setCellData(sheetName + "_Res", "Auth Secret", rowNum, login_Res.authSecret);
-		xlsReader.setCellData(sheetName + "_Res", "Message", rowNum, login_Res.authToken);
-		xlsReader.setCellData(sheetName + "_Res", "Auth ID Response Code", rowNum, login_Res.expiryDate);
-		xlsReader.setCellData(sheetName + "_Res", "RRN", rowNum, login_Res.message);
-		xlsReader.setCellData(sheetName + "_Res", "Transaction Time", rowNum, login_Res.responseCode);
+		xlsReader.setCellData(sheetName + "_Res", "Auth Token", rowNum, login_Res.authToken);
+		xlsReader.setCellData(sheetName + "_Res", "Expiry Date", rowNum, login_Res.expiryDate);
+		xlsReader.setCellData(sheetName + "_Res", "Message", rowNum, login_Res.message);
+		xlsReader.setCellData(sheetName + "_Res", "Response Code", rowNum, login_Res.responseCode);
 
 		if (login_Res.accessList == null || login_Res.accessList.isEmpty()) {
 			System.out.println("Access List NUll or Empty");
 		} else {
 			for (AccessList digital : login_Res.accessList) {
+				xlsReader.addColumn(shtName, "Access Type");
 				xlsReader.setCellData(sheetName + "_Res", "Access Type", rowNum, digital.accessType);
+				xlsReader.addColumn(shtName, "Function");
 				xlsReader.setCellData(sheetName + "_Res", "Function", rowNum, digital.function);
 			}
-			verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
 		}
+		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
 	}
 
 	private void verifyRespCode(String sheetName, String respCode, int rowNum, String colName) {

@@ -9,8 +9,9 @@ public enum APIResources {
 	p2ppayment("/p2p-payment"),
 	queryWalletBalance("/query-wallet-balance"),
 	updateUserEntity("/update-user"),
-	TransactionHistoryInquiry("/query-stmt");
-	
+	TransactionHistoryInquiry("/query-stmt"),
+	login("/login"),
+	Redeem("/redeem");
 
 	private String resource;
 

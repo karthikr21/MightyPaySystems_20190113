@@ -67,11 +67,11 @@ public class P2PTransferResBuilder {
 		xlsReader.setCellData(sheetName + "_Res", "availableQuantity", rowNum, P2pTransfer.availableQuantity);
 		xlsReader.setCellData(sheetName + "_Res", "platformRef", rowNum, P2pTransfer.platformRef);
 		
-		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
+		verifyRespCode(sheetName, map.get("Response Code"), map.get("Message"), rowNum, "Result");
 	}
 
-	private void verifyRespCode(String sheetName, String respCode, int rowNum, String colName) {
-		if (P2pTransfer.responseCode.equals(respCode)) {
+	private void verifyRespCode(String sheetName, String respCode, String message, int rowNum, String colName) {
+		if (P2pTransfer.responseCode.equals(respCode) && P2pTransfer.message.equals(message)) {
 			xlsReader.setCellData(sheetName, colName, rowNum, "PASS");
 		} else {
 			xlsReader.setCellData(sheetName, colName, rowNum, "FAIL");

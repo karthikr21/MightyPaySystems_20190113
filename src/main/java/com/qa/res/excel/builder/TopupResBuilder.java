@@ -65,11 +65,11 @@ public class TopupResBuilder {
 		xlsReader.setCellData(sheetName + "_Res", "Transaction Time Zone", rowNum, t_upRes.trxnTimeZone);
 
 
-		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
+		verifyRespCode(sheetName, map.get("Response Code"), map.get("Message"), rowNum, "Result");
 	}
 
-	private void verifyRespCode(String sheetName, String respCode, int rowNum, String colName) {
-		if (t_upRes.responseCode.equals(respCode)) {
+	private void verifyRespCode(String sheetName, String respCode, String message, int rowNum, String colName) {
+		if (t_upRes.responseCode.equals(respCode) && t_upRes.message.equals(message)) {
 			xlsReader.setCellData(sheetName, colName, rowNum, "PASS");
 		} else {
 			xlsReader.setCellData(sheetName, colName, rowNum, "FAIL");

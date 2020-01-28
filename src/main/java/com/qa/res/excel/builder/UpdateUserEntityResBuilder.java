@@ -57,11 +57,11 @@ public class UpdateUserEntityResBuilder {
 		xlsReader.setCellData(sheetName + "_Res", "Transaction Time", rowNum, UpdateRes.trxnTime);
 		xlsReader.setCellData(sheetName + "_Res", "Transaction Time Zone", rowNum, UpdateRes.trxnTimeZone);
 		xlsReader.setCellData(sheetName + "_Res", "user Entity Type", rowNum, UpdateRes.userEntityType);
-		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
+		verifyRespCode(sheetName, map.get("Response Code"), map.get("Message"), rowNum, "Result");
 	}
 
-	private void verifyRespCode(String sheetName, String respCode, int rowNum, String colName) {
-		if (UpdateRes.responseCode.equals(respCode)) {
+	private void verifyRespCode(String sheetName, String respCode, String message, int rowNum, String colName) {
+		if (UpdateRes.responseCode.equals(respCode) && UpdateRes.message.equals(message)) {
 			xlsReader.setCellData(sheetName, colName, rowNum, "PASS");
 		} else {
 			xlsReader.setCellData(sheetName, colName, rowNum, "FAIL");

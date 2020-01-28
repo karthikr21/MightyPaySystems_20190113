@@ -58,11 +58,11 @@ public class OnBoardUserEntityResBuilder {
 		xlsReader.setCellData(sheetName + "_Res", "User Entity ID", rowNum, onBrdRes.userEntityId);
 		xlsReader.setCellData(sheetName + "_Res", "Wallet ID", rowNum, onBrdRes.walletId);
 
-		verifyRespCode(sheetName, map.get("Response Code"), rowNum, "Result");
+		verifyRespCode(sheetName, map.get("Response Code"), map.get("Message"), rowNum, "Result");
 	}
 
-	private void verifyRespCode(String sheetName, String respCode, int rowNum, String colName) {
-		if (onBrdRes.responseCode.equals(respCode)) {
+	private void verifyRespCode(String sheetName, String respCode, String message, int rowNum, String colName) {
+		if (onBrdRes.responseCode.equals(respCode) && onBrdRes.message.equals(message)) {
 			xlsReader.setCellData(sheetName, colName, rowNum, "PASS");
 		} else {
 			xlsReader.setCellData(sheetName, colName, rowNum, "FAIL");
