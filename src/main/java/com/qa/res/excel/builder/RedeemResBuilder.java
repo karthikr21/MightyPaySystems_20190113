@@ -15,7 +15,7 @@ public class RedeemResBuilder {
 
 	public static String currentDir = System.getProperty("user.dir") + File.separator + "testdata\\";
 
-	Redeem_Res RedeemRes;
+	Redeem_Res RedeemRes = null;
 
 	Xls_Reader xlsReader;
 
@@ -34,7 +34,7 @@ public class RedeemResBuilder {
 			if (xlsReader.isSheetExist(sheetName + "_Res")) {
 				xlsReader.removeSheet(sheetName + "_Res");
 			}
-			
+
 			String shtName = xlsReader.addSheet(sheetName + "_Res");
 			xlsReader.addColumn(shtName, "Test Case ID");
 			xlsReader.addColumn(shtName, "Response Code");
@@ -65,11 +65,10 @@ public class RedeemResBuilder {
 		xlsReader.setCellData(sheetName + "_Res", "Quantity", rowNum, RedeemRes.quantity);
 		xlsReader.setCellData(sheetName + "_Res", "Available Quantity", rowNum, RedeemRes.availableQuantity);
 		xlsReader.setCellData(sheetName + "_Res", "Merchant Id", rowNum, RedeemRes.merchantId);
-		xlsReader.setCellData(sheetName + "_Res", "Platform Ref", rowNum, RedeemRes.merchantRef);
+		xlsReader.setCellData(sheetName + "_Res", "Merchant Ref", rowNum, RedeemRes.merchantRef);
 		xlsReader.setCellData(sheetName + "_Res", "Platform Ref", rowNum, RedeemRes.platformRef);
 		xlsReader.setCellData(sheetName + "_Res", "Transaction Time", rowNum, RedeemRes.trxnTime);
 		xlsReader.setCellData(sheetName + "_Res", "Transaction Time Zone", rowNum, RedeemRes.trxnTimeZone);
-
 
 		verifyRespCode(sheetName, map.get("Response Code"), map.get("Message"), rowNum, "Result");
 	}

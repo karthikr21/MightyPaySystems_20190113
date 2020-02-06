@@ -26,9 +26,9 @@ public class Redeem_Res {
 	public String walletId;
 	@JsonProperty("digitalAssetTypeCode")
 	public String digitalAssetTypeCode;
-	@JsonProperty("availableQuantity")
-	public String quantity;
 	@JsonProperty("quantity")
+	public String quantity;
+	@JsonProperty("availableQuantity")
 	public String availableQuantity;
 	@JsonProperty("merchantId")
 	public String merchantId;

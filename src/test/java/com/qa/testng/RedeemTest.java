@@ -47,6 +47,8 @@ public class RedeemTest extends RestAssuredBase {
 			writeFile(resourceAPI.toString(), reqData, response, map.get("TestCaseID"));
 			responseBuilder.RedeemResponse(mapper, response, dataWorkBookName, dataSheetName, map);
 		} else {
+
+			System.out.println("Response is NULL");
 		}
 	}
 }
